@@ -1,0 +1,28 @@
+syntax = "proto3";
+package login;
+
+option optimize_for = LITE_RUNTIME;
+
+message user {
+    string name = 1;
+    string pwd = 2;
+    message info {
+        repeated string photo = 1;
+        int32 addrno = 2;
+        int32 cityno = 3;
+    }
+    enum RET {
+        SUCCESS         = 0;        
+        ACCOUNT_NULL    = 1;    //账号不存在        
+        ACCOUNT_LOCK    = 2;    //账号锁定        
+        PASSWORD_ERROR  = 3;    //密码错误        
+        ERROR           = 10;        
+    }
+    enum SEX {
+        MALE            = 0;
+        FEMALE          = 1;
+    }
+    int32 ret = 3;
+    info me = 4;
+    bool sex = 5;
+}
